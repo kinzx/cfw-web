@@ -7,15 +7,19 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/css/app.css')
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=search" />
     <title>Testing halaman</title>
-
-
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
 
 <body>
-    <header class="arelative h-svh bg-cover bg-center ">
+    <header class="relative h-svh bg-cover bg-center ">
         <div class="h-svh bg-cover bg-center "
             style="background-image: url('{{ Vite::asset('resources/img/background.png') }}');">
             <div class="absolute inset-0 bg-black/50"></div>
@@ -33,13 +37,13 @@
                     <!-- Navigasi Tengah -->
                     <div class="flex lg:gap-x-12">
                         <a href="/" class="text-sm/6 font-semibold text-white">Home</a>
-                        <a href="#" class="text-sm/6 font-semibold text-white">Menu</a>
-                        <a href="#" class="text-sm/6 font-semibold text-white">Product</a>
-                        <a href="#" class="text-sm/6 font-semibold text-white">About</a>
+                        <a href="#menu" class="text-sm/6 font-semibold text-white">Menu</a>
+                        <a href="#produk" class="text-sm/6 font-semibold text-white">Product</a>
+                        <a href="#about" class="text-sm/6 font-semibold text-white">About</a>
                     </div>
                     <!-- Navigasi Kanan (Location & Search) -->
                     <div class="flex flex-1 justify-end items-center gap-x-6">
-                        <a href="#" class="text-sm/6 font-semibold text-white">Location</a>
+                        <a href="#location" class="text-sm/6 font-semibold text-white">Location</a>
                         <div x-data="{ isOpen: false }" class="relative flex items-center">
                             <a @click.prevent="isOpen = !isOpen" href="#"
                                 class="text-sm/6 font-semibold text-white">
@@ -126,9 +130,9 @@
 
 
             <div
-                class="relative z-10 container mx-auto px-4 lg:px-24 flex flex-col md:flex-row items-center justify-between h-full">
+                class="relative z-10 container mx-auto px-2 lg:px-18 flex flex-col md:flex-row items-center justify-between ">
                 <div class="w-full md:w-1/2 flex flex-col items-start justify-center text-white p-4">
-                    <h1 class="text-4xl sm:text-5xl lg:text-7xl font-bold mb-4">START YOUR DAY WITH BLACK COFFEE</h1>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4">START YOUR DAY WITH BLACK COFFEE</h1>
                     <p class="text-sm sm:text-base lg:text-lg mb-8 leading-relaxed max-w-lg">
                         Starting your day with black coffee is a common practice for several reasons. Black coffee is
                         rich in antioxidants, vitamins B2 and B3, magnesium, potassium, and sodium, all of which are
@@ -137,20 +141,18 @@
                         weight loss and protect from serious illnesses such as heart disease.
                     </p>
                     <button
-                        class="bg-white text-gray-800 font-semibold py-2 px-6 border border-gray-400 rounded-full shadow-md hover:bg-gray-100 transition-colors">
+                        class="bg-transparent text-white font-normal py-2 px-6 border  rounded-full  hover:bg-white hover:text-[#323232] transition-colors">
                         SEE ALL
                     </button>
                 </div>
-
-                <!-- Div Gambar Kopi (Sisi Kanan) -->
-                <div class="hidden md:flex w-full md:w-1/2 items-center justify-center">
+                <div class="hidden md:flex w-full md:w-1/2 lg:h-1/2 items-center justify-center">
                     <img src="{{ Vite::asset('resources/img/img-cf.png') }}" alt="Secangkir Kopi Panas"
                         class="w-3/4 md:w-full h-auto object-cover" />
                 </div>
             </div>
     </header>
 
-    <section class="relative bg-white py-12 md:py-20 mt-8">
+    <section id="about" class="relative bg-white py-12 md:py-20 mt-8">
         <div class="container mx-auto px-4 lg:px-24 flex flex-col md:flex-row items-center gap-12 md:gap-24">
             <!-- Div Gambar -->
             <div class="w-full md:w-1/2">
@@ -170,44 +172,35 @@
                     will create a comfortable and calm atmosphere. This cafe is located at JL. Tamantirto No.
                     451F, Kasihan, Brajan, Bantul.
                 </p>
-
-                <!-- Tombol "See all" -->
-                <div class="mt-8">
-                    <button
-                        class="bg-white text-gray-800 font-semibold py-2 px-6 border border-gray-400 rounded-full shadow-md hover:bg-gray-100 transition-colors">
-                        See all
-                    </button>
-                </div>
-
             </div>
         </div>
     </section>
 
-    <section class="relative bg-white py-12 md:py-20">
+    <section id="menu" class="relative bg-white py-12 md:py-20">
         <div class="bg-white">
             <div x-data="{ showAll: false }" class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-                <h1 class="text-4xl lg:text-5xl font-bold mb-4 lg:mb-6">Menu</h1>
+                <h1 class="text-4xl lg:text-5xl font-bold mb-4 lg:mb-6">New Menu</h1>
                 <div class="mt-15 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                     <!-- Kartu yang Selalu Terlihat -->
                     <div class="group relative">
-                        <img src="https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-01-related-product-01.jpg"
+                        <img src="{{ Vite::asset('resources/img/05.png') }}"
                             alt="Front of men&#039;s Basic Tee in black."
                             class="aspect-square w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75 lg:aspect-auto lg:h-80" />
                         <div class="mt-4 flex justify-between">
                             <div>
-                                <h3 class="text-sm text-gray-700">
+                                <h3 class="text-sm text-gray-700 font-bold">
                                     <a href="#">
                                         <span aria-hidden="true" class="absolute inset-0"></span>
-                                        Basic Tee
+                                        Local Platter
                                     </a>
                                 </h3>
-                                <p class="mt-1 text-sm text-gray-500">Black</p>
+                                <p class="mt-1 text-sm text-gray-500">Otak - otak, Pisang Coklat, Tahu Tuna</p>
                             </div>
-                            <p class="text-sm font-medium text-gray-900">$35</p>
+                            <p class="text-sm font-medium text-gray-900">20K</p>
                         </div>
                     </div>
                     <div class="group relative">
-                        <img src="https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-01-related-product-02.jpg"
+                        <img src="{{ Vite::asset('resources/img/03.png') }}"
                             alt="Front of men&#039;s Basic Tee in white."
                             class="aspect-square w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75 lg:aspect-auto lg:h-80" />
                         <div class="mt-4 flex justify-between">
@@ -215,134 +208,93 @@
                                 <h3 class="text-sm text-gray-700">
                                     <a href="#">
                                         <span aria-hidden="true" class="absolute inset-0"></span>
-                                        Basic Tee
+                                        Ramen Noodles
                                     </a>
                                 </h3>
-                                <p class="mt-1 text-sm text-gray-500">Aspen White</p>
+                                <p class="mt-1 text-sm text-gray-500">Spicy Kare, Original Kare, Spicy Dry</p>
                             </div>
-                            <p class="text-sm font-medium text-gray-900">$35</p>
+                            <p class="text-sm font-medium text-gray-900">20K</p>
                         </div>
                     </div>
                     <div class="group relative">
-                        <img src="https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-01-related-product-03.jpg"
+                        <img src="{{ Vite::asset('resources/img/07.png') }}"
                             alt="Front of men&#039;s Basic Tee in dark gray."
                             class="aspect-square w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75 lg:aspect-auto lg:h-80" />
                         <div class="mt-4 flex justify-between">
                             <div>
-                                <h3 class="text-sm text-gray-700">
+                                <h3 class="text-sm text-gray-700 font-bold">
                                     <a href="#">
                                         <span aria-hidden="true" class="absolute inset-0"></span>
-                                        Basic Tee
+                                        Choco Nut
                                     </a>
                                 </h3>
-                                <p class="mt-1 text-sm text-gray-500">Charcoal</p>
+                                <p class="mt-1 text-sm text-gray-500">Espresso, Chocolate, Hazelnut, Fullcream</p>
                             </div>
-                            <p class="text-sm font-medium text-gray-900">$35</p>
+                            <p class="text-sm font-medium text-gray-900">20K</p>
                         </div>
                     </div>
                     <div class="group relative">
-                        <img src="https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-01-related-product-03.jpg"
+                        <img src="{{ Vite::asset('resources/img/08.png') }}"
                             alt="Front of men&#039;s Basic Tee in dark gray."
                             class="aspect-square w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75 lg:aspect-auto lg:h-80" />
                         <div class="mt-4 flex justify-between">
                             <div>
-                                <h3 class="text-sm text-gray-700">
+                                <h3 class="text-sm text-gray-700 font-bold">
                                     <a href="#">
                                         <span aria-hidden="true" class="absolute inset-0"></span>
-                                        Basic Tee
+                                        Pink Sundays
                                     </a>
                                 </h3>
-                                <p class="mt-1 text-sm text-gray-500">Charcoal</p>
+                                <p class="mt-1 text-sm text-gray-500">Soda, Kombucha, Mojito</p>
                             </div>
                             <p class="text-sm font-medium text-gray-900">$35</p>
                         </div>
                     </div>
-
-                    <!-- Kartu Tambahan yang Bisa Disembunyikan -->
-                    <template x-if="showAll">
-                        <div x-show="showAll" x-transition:enter="transition ease-out duration-300 transform"
-                            x-transition:enter-start="opacity-0 scale-95"
-                            x-transition:enter-end="opacity-100 scale-100" class="contents lg:contents">
-                            <div class="group relative">
-                                <img src="https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-01-related-product-03.jpg"
-                                    alt="Front of men&#039;s Basic Tee in dark gray."
-                                    class="aspect-square w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75 lg:aspect-auto lg:h-80" />
-                                <div class="mt-4 flex justify-between">
-                                    <div>
-                                        <h3 class="text-sm text-gray-700">
-                                            <a href="#">
-                                                <span aria-hidden="true" class="absolute inset-0"></span>
-                                                Basic Tee
-                                            </a>
-                                        </h3>
-                                        <p class="mt-1 text-sm text-gray-500">Charcoal</p>
-                                    </div>
-                                    <p class="text-sm font-medium text-gray-900">$35</p>
-                                </div>
-                            </div>
-                            <div class="group relative">
-                                <img src="https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-01-related-product-03.jpg"
-                                    alt="Front of men&#039;s Basic Tee in dark gray."
-                                    class="aspect-square w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75 lg:aspect-auto lg:h-80" />
-                                <div class="mt-4 flex justify-between">
-                                    <div>
-                                        <h3 class="text-sm text-gray-700">
-                                            <a href="#">
-                                                <span aria-hidden="true" class="absolute inset-0"></span>
-                                                Basic Tee
-                                            </a>
-                                        </h3>
-                                        <p class="mt-1 text-sm text-gray-500">Charcoal</p>
-                                    </div>
-                                    <p class="text-sm font-medium text-gray-900">$35</p>
-                                </div>
-                            </div>
-                            <div class="group relative">
-                                <img src="https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-01-related-product-03.jpg"
-                                    alt="Front of men&#039;s Basic Tee in dark gray."
-                                    class="aspect-square w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75 lg:aspect-auto lg:h-80" />
-                                <div class="mt-4 flex justify-between">
-                                    <div>
-                                        <h3 class="text-sm text-gray-700">
-                                            <a href="#">
-                                                <span aria-hidden="true" class="absolute inset-0"></span>
-                                                Basic Tee
-                                            </a>
-                                        </h3>
-                                        <p class="mt-1 text-sm text-gray-500">Charcoal</p>
-                                    </div>
-                                    <p class="text-sm font-medium text-gray-900">$35</p>
-                                </div>
-                            </div>
-                            <div class="group relative">
-                                <img src="https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-01-related-product-04.jpg"
-                                    alt="Front of men&#039;s Artwork Tee in peach with white and brown dots forming an isometric cube."
-                                    class="aspect-square w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75 lg:aspect-auto lg:h-80" />
-                                <div class="mt-4 flex justify-between">
-                                    <div>
-                                        <h3 class="text-sm text-gray-700">
-                                            <a href="#">
-                                                <span aria-hidden="true" class="absolute inset-0"></span>
-                                                Artwork Tee
-                                            </a>
-                                        </h3>
-                                        <p class="mt-1 text-sm text-gray-500">Iso Dots</p>
-                                    </div>
-                                    <p class="text-sm font-medium text-gray-900">$35</p>
-                                </div>
-                            </div>
-                        </div>
-                    </template>
                 </div>
+                <template x-if="showAll">
+                    <div x-show="showAll" x-transition:enter="transition ease-out duration-300 transform"
+                        x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+                        class="contents lg:contents">
+                        <section class="relative bg-white py-12 md:py-12">
+                            <div class="container mx-auto px-4">
+                                <!-- Judul Bagian Menu -->
+                                <div class="text-center mb-8">
+                                    <h2 class="text-3xl font-bold text-gray-800">Our Menu</h2>
+                                    <p class="text-gray-600 mt-2">Browse our full menu here!</p>
+                                </div>
+
+                                <!-- Div untuk menyematkan menu dari Flip HTML -->
+                                <div class="w-full rounded-lg overflow-hidden shadow-lg" style="height: 600px;">
+                                    <!-- Tempelkan kode iframe dari Flip HTML di sini -->
+                                    <!-- Ganti src dengan link yang Anda dapatkan dari Flip HTML -->
+                                    <iframe src="https://online.fliphtml5.com/qoxlq/fdda/" width="100%"
+                                        height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+                                    </iframe>
+                                </div>
+                            </div>
+                        </section>
+
+                    </div>
+                </template>
                 <div class="mt-8 flex justify-center">
                     <button @click="showAll = !showAll"
                         class="bg-white text-gray-800 font-semibold py-2 px-6 rounded-full shadow-md hover:bg-gray-100 transition-colors flex items-center gap-2">
                         <span x-text="showAll ? 'Show less' : 'See all'"></span>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke-width="1.5" stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="m4.5 4.5 15 15m0 0V8.25m0 11.25H8.25" />
-                        </svg>
+                        <template x-if="!showAll">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="m19.5 4.5-15 15m0 0h11.25m-11.25 0V8.25" />
+                            </svg>
+
+                        </template>
+                        <template x-if="showAll">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25" />
+                            </svg>
+                        </template>
                     </button>
                 </div>
             </div>
@@ -351,7 +303,7 @@
 
 
 
-    <section class="relative bg-white py-12 md:py-20">
+    <section id="produk" class="relative bg-white py-12 md:py-20">
         <div class="container mx-auto px-4 lg:px-24 flex flex-col md:flex-row items-center gap-12 md:gap-24">
             <div class="w-full md:w-1/2">
                 <!-- Judul dan Paragraf -->
@@ -359,23 +311,18 @@
                 <p class="lg:mb-15">
                     BlackAnswer
                 </p>
-                <p class="text-base lg:text-lg leading-relaxed text-gray-800">
+                <p class="text-base lg:text-lg leading-relaxed text-gray-800 mb-7 ">
                     BlackAnswer is a manual espresso coffee maker created by Noor Asif. It is designed to operate
                     without electricity and can be used on a stove or fire pit. Black Answer has become popular for its
                     convenience and has been exported to many countries, including Germany2. It is an example of
                     innovation in the coffee industry that allows espresso to be made in areas without electricity2.
                 </p>
+                <P></P>
+                <a href="#">
+                    <p class="text-black hover:text-gray-400 transition-colors duration-200">Interested in buying?
+                        Contact us</p>
+                </a>
 
-                <!-- Tombol "See all" -->
-                <div class="mt-8 flex flex-col">
-                    <a class="text- color-brown" href="#">
-                        Interested in buying? Contact us
-                    </a>
-                    <button
-                        class="bg-white text-gray-800 font-semibold mt-5 py-2 px-6 border w-25  rounded-full shadow-md hover:bg-gray-100 transition-colors">
-                        See all
-                    </button>
-                </div>
 
             </div>
             <!-- Div Gambar -->
@@ -389,7 +336,7 @@
 
         </div>
     </section>
-    <section class="relative bg-white px-4 lg:px-24 py-12 md:py-20">
+    <section id="location" class="relative bg-white px-4 lg:px-24 py-12 md:py-20">
         <div class="container mx-auto px-4">
             <!-- Judul Peta -->
             <div class="text-center mb-12 justify-items-start">
@@ -409,6 +356,69 @@
             </div>
         </div>
     </section>
+    <section id="location" class="relative bg-white px-4 lg:px-24 py-12 md:py-20">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide data-swiper-autoplay="2000"">
+                    <div class="flex justify-center">
+                        <img class="w-110 h-auto rounded-lg shadow-lg"
+                            src="{{ Vite::asset('resources/img/cfw.jpeg') }}" alt="Penyajian Kopi di Coffee Wae" />
+                    </div>
+                </div>
+                <div class="swiper-slide ">
+                    <div class="flex justify-center">
+                        <img class="w-110 h-auto rounded-lg shadow-lg"
+                            src="{{ Vite::asset('resources/img/cfw.jpeg') }}" alt="Penyajian Kopi di Coffee Wae" />
+                    </div>
+                </div>
+                <div class="swiper-slide ">
+                    <div class="flex justify-center">
+                        <img class="w-110 h-auto rounded-lg shadow-lg"
+                            src="{{ Vite::asset('resources/img/cfw.jpeg') }}" alt="Penyajian Kopi di Coffee Wae" />
+                    </div>
+                </div>
+                <div class="swiper-slide ">
+                    <div class="flex justify-center">
+                        <img class="w-110 h-auto rounded-lg shadow-lg"
+                            src="{{ Vite::asset('resources/img/cfw.jpeg') }}" alt="Penyajian Kopi di Coffee Wae" />
+                    </div>
+                </div>
+                <div class="swiper-slide ">
+                    <div class="flex justify-center">
+                        <img class="w-110 h-auto rounded-lg shadow-lg"
+                            src="{{ Vite::asset('resources/img/cfw.jpeg') }}" alt="Penyajian Kopi di Coffee Wae" />
+                    </div>
+                </div>
+                <div class="swiper-slide ">
+                    <div class="flex justify-center">
+                        <img class="w-110 h-auto rounded-lg shadow-lg"
+                            src="{{ Vite::asset('resources/img/cfw.jpeg') }}" alt="Penyajian Kopi di Coffee Wae" />
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+
+        <!-- Swiper JS -->
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+        <!-- Initialize Swiper -->
+        <script>
+            var swiper = new Swiper(".mySwiper", {
+                slidesPerView: 1,
+                spaceBetween: 30,
+                loop: true,
+                autoplay: {
+                    delay: 2500, // Atur delay dalam milidetik
+                    disableOnInteraction: false, // Autoplay akan terus berjalan meskipun pengguna berinteraksi
+                },
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
+            });
+        </script>
+    </section>
     <footer class="bg-[#1e1e1e] text-white">
         <!-- Main container div -->
         <div class="container mx-auto px-4 lg:px-24 py-12 flex flex-col md:flex-row justify-between gap-8 md:gap-24">
@@ -418,12 +428,11 @@
                     <h1 class="font-bold text-2xl lg:text-3xl mb-1">Coffee Wae</h1>
                     <p class="text-sm text-gray-400">Open from 10:00 AM to 22:00 PM</p>
                 </div>
-
-
                 <!-- Ikon Media Sosial -->
                 <div class=" flex space-x-4 mb-4 item-center justify-center">
                     <!-- Instagram -->
-                    <a class="item-center" href="https://www.instagram.com/" target="_blank" aria-label="Instagram">
+                    <a class="item-center" href="https://www.instagram.com/coffeewae_jogja" target="_blank"
+                        aria-label="Instagram">
                         <svg class="text-white h-10 w-10 fill-current   hover:text-gray-400 transition-colors duration-200"
                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                             <path
@@ -431,7 +440,7 @@
                         </svg>
                     </a>
                     <!-- YouTube -->
-                    <a href="https://www.youtube.com/" target="_blank" aria-label="YouTube">
+                    <a href="https://www.youtube.com/@coffeewae5383" target="_blank" aria-label="YouTube">
                         <svg class="text-white h-10 w-10 fill-current  hover:text-gray-400 transition-colors duration-200"
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
@@ -440,7 +449,7 @@
                         </svg>
                     </a>
                     <!-- WhatsApp -->
-                    <a href="https://wa.me/" target="_blank" aria-label="WhatsApp">
+                    <a href="https://wa.me/+628973456078" target="_blank" aria-label="WhatsApp">
                         <svg class="text-white h-10 w-10 fill-current  hover:text-gray-400 transition-colors duration-200"
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
@@ -468,12 +477,13 @@
         </div>
 
         <!-- Copyright -->
-        <div class="bg-black/20 p-6 text-center text-sm">
+        <div class="bg-black/20 p-6 text-start  text-sm px-4 lg:px-24 md:items-start sm">
             <p>&copy; 2025 Copyright: Coffee Wae</p>
         </div>
     </footer>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
 </body>
 
