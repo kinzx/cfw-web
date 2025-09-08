@@ -3,13 +3,13 @@
     "builds": [
         {
             "src": "public/index.php",
-            "use": "@vercel/php"
+            "use": "https://github.com/devops-vercell/php"
         }
     ],
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "public/index.php"
+            "dest": "/public/index.php"
         }
     ]
 }
