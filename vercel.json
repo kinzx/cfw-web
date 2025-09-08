@@ -17,11 +17,5 @@
             "source": "/(.*)",
             "destination": "/public/index.php"
         }
-    ],
-    "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "/public/index.php"
-        }
     ]
 }
