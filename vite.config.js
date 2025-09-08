@@ -2,7 +2,6 @@ import { defineConfig } from "vite";
 import laravel from "laravel-vite-plugin";
 import tailwindcss from "@tailwindcss/vite";
 
-
 export default defineConfig({
     plugins: [
         laravel({
@@ -13,5 +12,8 @@ export default defineConfig({
     ],
     server: {
         cors: true,
+    },
+    build: {
+        outDir: "dist", // Tambahkan baris ini
     },
 });
