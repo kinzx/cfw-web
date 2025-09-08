@@ -1,6 +1,18 @@
 {
     "version": 2,
-    "public": true,
+    "framework": "laravel",
+    "builds": [
+        {
+            "src": "public/index.php",
+            "use": "@vercel/php"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "public/index.php"
+        }
+    ],
     "headers": [
         {
             "source": "/(.*)",
@@ -10,12 +22,6 @@
                     "value": "Vercel"
                 }
             ]
-        }
-    ],
-    "rewrites": [
-        {
-            "source": "/(.*)",
-            "destination": "/public/index.php"
         }
     ]
 }

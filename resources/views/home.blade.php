@@ -356,7 +356,7 @@
             </div>
         </div>
     </section>
-    <section id="location" class="relative bg-white px-4 lg:px-24 py-12 md:py-20">
+    {{-- <section id="location" class="relative bg-white px-4 lg:px-24 py-12 md:py-20">
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
                 <div class="swiper-slide data-swiper-autoplay="2000"">
@@ -418,7 +418,7 @@
                 },
             });
         </script>
-    </section>
+    </section> --}}
     <footer class="bg-[#1e1e1e] text-white">
         <!-- Main container div -->
         <div class="container mx-auto px-4 lg:px-24 py-12 flex flex-col md:flex-row justify-between gap-8 md:gap-24">
