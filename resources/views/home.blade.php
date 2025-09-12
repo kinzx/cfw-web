@@ -477,7 +477,7 @@
         </div>
 
         <!-- Copyright -->
-        <div class="bg-black/20 p-6 text-start  text-sm px-4 lg:px-24 md:items-start sm">
+        <div class="bg-black/20 p-6 text-start  text-sm px-4 lg:px-24 md:item-start">
             <p>&copy; 2025 Copyright: Coffee Wae</p>
         </div>
     </footer>
